@@ -1,0 +1,23 @@
+{
+  "name": "eh-tags",
+  "version": "0.0.0",
+  "description": "",
+  "scripts": {
+    "start": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chocolatl/eh-tags.git"
+  },
+  "author": "chocolatl",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Chocolatl/eh-tags/issues"
+  },
+  "homepage": "https://github.com/Chocolatl/eh-tags#readme",
+  "dependencies": {
+    "got": "^9.6.0",
+    "jsdom": "^15.0.0",
+    "socks5-https-client": "^1.2.1"
+  }
+}
