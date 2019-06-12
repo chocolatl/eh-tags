@@ -39,16 +39,6 @@ function start(ehCookies, requestOptions) {
     const tags = Array.from(elements).map(e => e.textContent.replace(new RegExp(`^${namespace}:`), ''));
     return tags;
   }
-
-  async function getFetishTags() {
-    const url = 'https://ehwiki.org/wiki/Fetish_Listing';
-    const response = await got.get(url, requestOptions);
-    const document = new JSDOM(response.body).window.document;
-    const contentArea = document.querySelector('#mw-content-text');
-    const purify = text => text.replace(/\u200E$/, '');   // <https://ehwiki.org/wiki/Fetish_Listing>中有几个标签末尾有一个`&lrm;`字符，需要去掉
-    const tags = Array.from(contentArea.querySelectorAll('h2+p>a,h3+p>a,h4+p>a')).map(e => purify(e.textContent));
-    return tags;
-  }
   
   async function getTagDefinitionFromURL(url, tagSet) {
     try {
@@ -88,9 +78,6 @@ function start(ehCookies, requestOptions) {
       const tags = await getNamespaceTags(url, namespace);
       handleNamespaceTags(namespace, tags);
     }
-
-    const fetishTags = await getFetishTags();
-    handleNamespaceTags('fetish', fetishTags);
 
     for (const [namespace, tags] of classifiedTags) {
       let count = 0;

@@ -5,13 +5,12 @@
 - 英文标签数据来源为：<https://e-hentai.org/tools.php?act=taggroup>
 - 英文标签描述来源为：<https://ehwiki.org/wiki/{tag}>
 - 不收集下级标签，如`yandere`的下级标签为：<https://e-hentai.org/tools.php?act=taggroup&mastertag=4892>，基本是对拼写错误的纠正
-- Fetish List来源为：<https://ehwiki.org/wiki/Fetish_Listing>
 
 ## 数据格式
 
 ```js
 {
-  female: {               // 命名空间，分别为：misc、reclass、language、parody、character、group、artist、male、female，以及一个额外的fetish
+  female: {               // 命名空间，分别为：misc、reclass、language、parody、character、group、artist、male、female
     lolicon: {            // 标签名
       description: 'Underage girls in sexual situations or being nude. Not to be confused with young girls in general; should have undeveloped bodies.',    // 对应EHWiki中的Description，不存在时为空字符串，如果有多行用\n分隔
       note: 'Only appearance should be taken into account when tagging this.\nIs required for the oppai loli and low lolicon tags.',                        // 对应EHWiki中的Note，不存在时为空字符串，如果有多行用\n分隔
@@ -32,4 +31,3 @@
 
 - 内容为纯文本，使用`Node.textContent`获取，不包含HTML标签等信息
 - 两个命名空间下可能有相同标签，比如`male`和`female`下都有`x-ray`标签
-- `fetish`中大多数都是属于`male`与`female`命名空间的标签，但是数量比<https://e-hentai.org/tools.php?act=taggroup>中对应命名空间中列出的多
