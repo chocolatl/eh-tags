@@ -59,7 +59,7 @@ function start(ehCookies, requestOptions) {
       if (targetField.every(k => !definition[k])) {
         return null;      // 所需的三个字段词条中都没出现时，返回null
       }
-      definition.related = definition.related.filter(tag => tagSet.has(tag))  // 过滤不存在于tagSet的标签
+      definition.relatedTags = definition.relatedTags.filter(tag => tagSet.has(tag))  // 过滤不存在于tagSet的标签
       return definition;
     } catch (err) {
       if (err instanceof got.HTTPError && err.statusCode === 404) {

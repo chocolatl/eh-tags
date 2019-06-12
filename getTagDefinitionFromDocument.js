@@ -44,15 +44,15 @@ function getTagDefinitionFromDocument(document, targetField) {
   targetField.forEach(k => definition[k] = purify(definition[k].join('\n')));
 
   /**
-   * 生成related字段
+   * 生成relatedTags字段
    */
-  definition.related = 
+  definition.relatedTags = 
     Array.from(document.querySelectorAll('#mw-content-text a'))
          .filter(e => !e.className)                   // 标签相关的链接没有className
          .map(e => e.textContent.split(':').pop())    // 取出标签链接元素的文本，有命名空间的去除命名空间，如`misc:group`只取`group`
          .filter(tag => targetField.some(k => definition[k].includes(tag)))   // 标签在targetField指定的字段中出现
   ;
-  definition.related = [...new Set(definition.related)];    // 去重
+  definition.relatedTags = [...new Set(definition.relatedTags)];    // 去重
 
   return definition;
 }
